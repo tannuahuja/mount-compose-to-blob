@@ -22,4 +22,32 @@ to get the account key we can run this command
    sudo mkdir -p /mnt/blobfuse
 sudo mkdir -p /mnt/blobfuse_cache
 
-5. 
+5. mount the azure blob storage
+   sudo blobfuse /mnt/blobfuse --tmp-path=/mnt/blobfuse_cache --config-file=/etc/blobfuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other
+
+verify the mount
+ls /mnt/blobfuse
+
+6. update the docker compose file
+
+version: "3"
+services:
+    shinobi:
+        image: registry.gitlab.com/shinobi-systems/shinobi:dev
+        container_name: Shinobi
+        environment:
+           - PLUGIN_KEYS={}
+           - SSL_ENABLED=false
+        volumes:
+           - /home/azureuser/Shinobi/config:/config
+           - /home/azureuser/Shinobi/customAutoLoad:/home/Shinobi/libs/customAutoLoad
+           - /home/azureuser/Shinobi/database:/var/lib/mysql
+           - /mnt/blobfuse:/home/Shinobi/videos  # Mount Azure Blob storage for video data
+           - /home/azureuser/Shinobi/plugins:/home/Shinobi/plugins
+           - /dev/shm/Shinobi/streams:/dev/shm/streams
+        ports:
+           - 8080:8080
+        restart: unless-stopped
+
+7. docker-compose up -d
+run docker compose 
