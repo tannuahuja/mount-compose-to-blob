@@ -1,3 +1,4 @@
+
 we have a docker compose file we have to mount the volume to the azure blob storage
 
 : To store data from your Docker container in Azure Blob Storage using Blobfuse
@@ -51,3 +52,7 @@ services:
 
 7. docker-compose up -d
 run docker compose 
+
+
+
+
