@@ -23,18 +23,23 @@ to get the account key we can run this command
   sudo chmod 600 /etc/blobfuse_connection.cfg
 
 4. create mount point and cache directories
+```
    sudo mkdir -p /mnt/blobfuse
-sudo mkdir -p /mnt/blobfuse_cache
-
-5. mount the azure blob storage
+   sudo mkdir -p /mnt/blobfuse_cache
+```
+6. mount the azure blob storage
+```
    sudo blobfuse /mnt/blobfuse --tmp-path=/mnt/blobfuse_cache --config-file=/etc/blobfuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other
+```
 
 verify the mount
+```
 ls /mnt/blobfuse
-
+```
 6. update the docker compose file
 
-```version: "3"
+```
+version: "3"
 services:
     shinobi:
         image: registry.gitlab.com/shinobi-systems/shinobi:dev
@@ -53,10 +58,11 @@ services:
            - 8080:8080
         restart: unless-stopped```
 
-7. docker-compose up -d
-run docker compose 
+7. run docker compose 
 
-
+```
+docker-compose up -d
+```
 
 links: 
 (main)
