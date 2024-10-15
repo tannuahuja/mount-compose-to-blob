@@ -34,7 +34,7 @@ ls /mnt/blobfuse
 
 6. update the docker compose file
 
-version: "3"
+```version: "3"
 services:
     shinobi:
         image: registry.gitlab.com/shinobi-systems/shinobi:dev
@@ -51,7 +51,7 @@ services:
            - /dev/shm/Shinobi/streams:/dev/shm/streams
         ports:
            - 8080:8080
-        restart: unless-stopped
+        restart: unless-stopped```
 
 7. docker-compose up -d
 run docker compose 
