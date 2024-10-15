@@ -1,0 +1,21 @@
+sudo mkdir -p /mnt/new_blobfuse
+sudo mkdir -p /mnt/new_blobfuse_cache
+
+# Create Blobfuse configuration file
+sudo nano /etc/blobfuse_new_connection.cfg
+# (Add configuration details, then save and exit)
+
+sudo chmod 600 /etc/blobfuse_new_connection.cfg
+
+# Mount Azure Blob storage
+sudo blobfuse /mnt/new_blobfuse --tmp-path=/mnt/new_blobfuse_cache --config-file=/etc/blobfuse_new_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other
+
+# Verify mount
+ls /mnt/new_blobfuse
+
+# Update docker-compose.yml
+nano docker-compose.yml
+# (Make necessary changes, then save and exit)
+
+# Run Docker Compose
+docker-compose up -d
