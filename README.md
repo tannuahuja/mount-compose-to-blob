@@ -57,4 +57,5 @@ run docker compose
 
 
 
-
+links: 
+https://www.srcecde.me/posts/2022/09/mount-azure-blob-storage-as-file-system-on-docker-container/
