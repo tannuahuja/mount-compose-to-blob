@@ -14,8 +14,10 @@ in this file add:
 accountKey YOUR_ACCOUNT_KEY
 containerName composedata
 
-to get the account key we can run this command
+###### to get the account key we can run this command
+```
  az storage account keys list --account-name datavideostorage --query '[0].value' --output tsv
+```
 
 3. secure the config file
   sudo chmod 600 /etc/blobfuse_connection.cfg
