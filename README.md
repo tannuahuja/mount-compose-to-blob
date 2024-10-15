@@ -2,7 +2,8 @@ we have a docker compose file we have to mount the volume to the azure blob stor
 Mount Azure BLOB Storage as File System on Docker container
 
 
-: To store data from your Docker container in Azure Blob Storage using Blobfuse
+: :    
+To store data from your Docker container in Azure Blob Storage using Blobfuse
 1. install blobfuse
    sudo apt-get update
   sudo apt-get install -y blobfuse fuse
